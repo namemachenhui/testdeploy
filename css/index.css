@@ -29,7 +29,6 @@ body,
 }
 .mark_image {
   z-index: -3;
-  background-image: url("../images/shifu.jpg");
   background-size: cover;
   background-position: top;
   filter: blur(50px);
@@ -37,14 +36,24 @@ body,
 .mark_over {
   z-index: -1;
   background: rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 400px 1px;
 }
 .main_box {
   padding-top: 0.75rem;
+  height: calc(100vh - 33%);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.main_box .disk_box {
+  position: relative;
+  height: 2.47rem;
 }
 .main_box .disk_wrapper {
+  animation: diskRotate;
   animation-timing-function: linear;
-  animation-duration: 3.5s;
+  animation-duration: 9s;
   animation-iteration-count: infinite;
+  animation-play-state: paused;
   margin: 0 auto;
   width: 2.47rem;
   height: 2.47rem;
@@ -84,7 +93,7 @@ body,
 }
 .main_box .niddle {
   position: absolute;
-  top: 0.15rem;
+  top: -0.6rem;
   left: 1.85rem;
 }
 .main_box .niddle img {
@@ -95,16 +104,191 @@ body,
   margin: 0.25rem auto 0;
   padding: 0 0.35rem;
   position: relative;
+  height: calc(100% - 2.6rem);
 }
 .main_box .head_info {
   text-align: center;
   color: #fefefe;
-  font-size: 18px;
+  height: 0.2rem;
+  line-height: 0.2rem;
+  font-size: 0.18rem;
 }
 .main_box .head_info span:nth-child(3) {
-  font-size: 16px;
-  color: #ffffff99;
+  font-size: 0.16rem;
+  color: rgba(255, 255, 255, 0.6);
 }
+.main_box .words_box {
+  margin: 0.14rem 0 0 0;
+  width: 3.05rem;
+  height: 100%;
+  overflow: hidden;
+}
+.main_box .words_box .words_wrapper {
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 0.2s;
+}
+.main_box .words_box .words_wrapper p {
+  padding: 0 0 0.02rem 0;
+  font-size: 0.14rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+}
+.main_box .words_box .words_wrapper p.active {
+  color: #ffffff;
+}
+.bottom_box {
+  position: absolute;
+  width: 100%;
+  height: 33%;
+  bottom: 0;
+  padding-top: 0rem;
+}
+.bottom_box .sing_and_listen {
+  margin: 0.18rem 0 0 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.bottom_box .sing_and_listen .sing_the_song {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottom_box .sing_and_listen .sing_the_song img:nth-child(1) {
+  width: 1.12rem;
+  height: 0.27rem;
+  margin-right: 0.02rem;
+}
+.bottom_box .sing_and_listen .sing_the_song img:nth-child(2) {
+  position: relative;
+  left: -0.2rem;
+  top: 0.01rem;
+  width: 0.15rem;
+  height: 0.15rem;
+}
+.bottom_box .sing_and_listen .middle_line {
+  height: 0.14rem;
+  width: 0.01rem;
+  background: rgba(255, 255, 255, 0.2);
+}
+.bottom_box .sing_and_listen .together_listen {
+  height: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.26rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.14rem;
+}
+.bottom_box .sing_and_listen .together_listen .iconfont {
+  background-image: url("../images/unknown.png");
+  background-size: cover;
+  animation: myAnimation 3.8s steps(1) infinite;
+  width: 0.2rem;
+  height: 0.2rem;
+  margin-right: 0.04rem;
+}
+.bottom_box .go_to_app {
+  position: absolute;
+  width: 100%;
+  bottom: 0.81rem;
+}
+.bottom_box .go_to_app .btn_box {
+  display: flex;
+  padding: 0 0.1rem;
+}
+.bottom_box .go_to_app .btn_box .download_app,
+.bottom_box .go_to_app .btn_box .open_app {
+  flex: 1 1 auto;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  border-radius: 0.4rem;
+  text-align: center;
+  font-size: 0.18rem;
+  letter-spacing: 0.05rem;
+}
+.bottom_box .go_to_app .btn_box .open_app {
+  background: transparent;
+  border: 1px solid #ff3a3a;
+}
+.bottom_box .go_to_app .btn_box .open_app a {
+  color: #ff3a3a;
+}
+.bottom_box .go_to_app .btn_box .download_app {
+  background-color: #ff3a3a;
+  border: 1px solid #adadad;
+  margin-left: 10px;
+}
+.bottom_box .go_to_app .btn_box .download_app a {
+  color: #fff;
+}
+.footer_box {
+  padding: 0 0.1rem;
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  color: white;
+}
+.footer_box .bar {
+  display: flex;
+  align-items: center;
+}
+.footer_box .bar .time {
+  width: 0.5rem;
+  line-height: 0.46rem;
+  text-align: center;
+  font-size: 0.12rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+.footer_box .bar .progress {
+  position: relative;
+  flex-grow: 1;
+  height: 0.02rem;
+  background: rgba(255, 255, 255, 0.5);
+}
+.footer_box .bar .progress .already {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #31c27c;
+}
+/* .loading-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background: #555;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .content {
+    img,
+    span {
+      display: block;
+    }
+
+    img {
+      margin: 0 auto;
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+
+    span {
+      margin-top: 0.1rem;
+      color: rgb(25, 137, 250);
+    }
+  }
+} */
 @keyframes diskRotate {
   0% {
     transform: rotate(0deg);

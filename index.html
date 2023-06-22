@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>music-player</title>
+    <link rel="icon" href="//s1.music.126.net/style/favicon.ico?v20180307" />
     <link rel="stylesheet" href="./css/reset.min.css" />
     <link rel="stylesheet" href="./css/index.css" />
     <style></style>
@@ -16,9 +17,9 @@
         <!-- 唱片部分 -->
         <div class="disk_box">
           <div class="disk_wrapper">
-            <!-- 唱片图 -->
+            <!-- 唱片图：需要拿取数据渲染出来 -->
             <div class="img_box">
-              <img src="./images/shifu.jpg" alt="" />
+              <!-- <img src="./images/shifu.jpg" alt="" /> -->
             </div>
             <!-- 黑圈 -->
             <div class="black_disk">
@@ -33,16 +34,16 @@
         <!-- 歌曲信息 -->
         <div class="song_info">
           <div class="head_info">
-            <span class="title">师傅</span>
+            <!-- <span class="title">师傅</span>
             <span> - </span>
-            <span class="singer">王朝1982/卦者灵风/朱旭BooBoo</span>
+            <span class="singer">王朝1982/卦者灵风/朱旭BooBoo</span> -->
           </div>
           <!-- 歌词盒子 -->
           <div class="words_box">
             <div class="words_wrapper">
-              <p>师傅！</p>
+              <!-- <p class="active">师傅!</p>
               <p>有Master会功夫</p>
-              <p>没Master受欺负</p>
+              <p>没Master受欺负</p> -->
             </div>
           </div>
         </div>
@@ -53,8 +54,8 @@
         <!-- 唱听部分 -->
         <div class="sing_and_listen">
           <div class="sing_the_song">
-            <span class="iconfont"></span>
-            <span>唱这首歌</span>
+            <img src="./images/singTheSong.png" alt="" />
+            <img src="./images/singrightarrow.png" alt="" />
           </div>
           <div class="middle_line"></div>
           <div class="together_listen">
@@ -64,16 +65,43 @@
         </div>
         <!-- 去app -->
         <div class="go_to_app">
-          <div class="open_app">打开</div>
-          <div class="download_app">下载</div>
+          <div class="btn_box">
+            <div class="open_app">
+              <a href="">打开</a>
+            </div>
+            <div class="download_app">
+              <a href="">下载</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="footer_box"></div>
+
+      <!-- 尾部 -->
+      <div class="footer_box">
+        <div class="bar">
+          <span class="time current">00:00</span>
+          <div class="progress">
+            <div class="already"></div>
+          </div>
+          <span class="time duration">00:00</span>
+        </div>
+      </div>
 
       <!-- 其他 -->
       <div class="others_box">
         <div class="mark_image"></div>
         <div class="mark_over"></div>
+        <!-- <div class="loading_box">
+          <div class="content">
+            <img src="images/loading.gif" alt="" />
+            <span>奴家正在努力加载中...</span>
+          </div>
+        </div> -->
+        <audio
+          id="audioBox"
+          src="./audios/shifu.m4a"
+          preload="metadata"
+        ></audio>
       </div>
     </div>
     <script>
@@ -104,5 +132,8 @@
         // 基于 resize 代替 orientationchange 事件：这样可以适配模拟器中，设备的切换场景
       })();
     </script>
+    <script src="./js/api.js"></script>
+    <script src="./js/fastclick.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>
