@@ -78,9 +78,17 @@ FastClick.attach(document.body);
       matchs.forEach((item) => (item.className = "active"));
       // 控制移动
       matchNum += matchs.length;
-      if (matchNum > 3) {
-        let offset = (matchNum - 3) * pH;
+      if (matchNum > 2) {
+        let offset = (matchNum - 2) * pH;
         wordsWrapper.style.transform = `translateY(${-offset}px)`;
+        matchs.forEach((item) => {
+          // console.log(
+          //   item.getAttribute("minutes"),
+          //   item.getAttribute("seconds"),
+          //   item.innerHTML
+          // );
+          console.log(item);
+        });
       }
     }
   };
@@ -118,7 +126,7 @@ FastClick.attach(document.body);
         text: $3.trim(),
       });
     });
-    // console.log("歌词数组:", arr);
+    console.log("歌词数组:", arr);
     // 歌词绑定
     let str = ``;
     arr.forEach(({ minutes, seconds, text, index }) => {
@@ -130,7 +138,7 @@ FastClick.attach(document.body);
     wordsWrapper.innerHTML = str;
     // 获取所有的P标签
     wordpList = Array.from(wordsWrapper.querySelectorAll("p"));
-    console.log("歌词段落数组:", wordpList);
+    // console.log("歌词段落数组:", wordpList);
   };
   // 绑定数据
   const binding = function binding(data) {

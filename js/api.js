@@ -14,16 +14,16 @@ const obj = {
 
 const API = {
   queryLyric() {
-    // return new Promise((resolve) => {
-    //   setTimeout(() => {
-    //     resolve(obj);
-    //   }, Math.round(Math.random() * (2000 - 500) + 500));
-    // });
-
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(obj);
-      }, 0);
+      }, Math.round(Math.random() * (2000 - 500) + 500));
     });
+
+    // return new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     resolve(obj);
+    //   }, 0);
+    // });
   },
 };

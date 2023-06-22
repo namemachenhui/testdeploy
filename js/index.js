@@ -78,8 +78,8 @@ FastClick.attach(document.body);
       matchs.forEach((item) => (item.className = "active"));
       // 控制移动
       matchNum += matchs.length;
-      if (matchNum > 3) {
-        let offset = (matchNum - 3) * pH;
+      if (matchNum > 2) {
+        let offset = (matchNum - 2) * pH;
         wordsWrapper.style.transform = `translateY(${-offset}px)`;
         matchs.forEach((item) => {
           // console.log(
@@ -118,20 +118,21 @@ FastClick.attach(document.body);
     // 解析歌词信息
     let arr = [];
     let index = 1;
-    lyric.replace(/\[(\d+):(\d+).(?:\d+)\](.+)\n/g, (_, $1, $2, $3) => {
+    lyric.replace(/\[(\d+):(\d+).(\d+)\](.+)\n/g, (_, $1, $2, $3, $4) => {
       arr.push({
         index: index++,
         minutes: $1,
         seconds: $2,
-        text: $3.trim(),
+        percent: $3,
+        text: $4.trim(),
       });
     });
     console.log("歌词数组:", arr);
     // 歌词绑定
     let str = ``;
-    arr.forEach(({ minutes, seconds, text, index }) => {
+    arr.forEach(({ minutes, seconds, percent, index, text }) => {
       str += `
-        <p minutes="${minutes}" seconds="${seconds}" index="${index}">
+        <p minutes="${minutes}" seconds="${seconds}" percent="${percent}" index="${index}">
           ${text}
         </p>`;
     });
