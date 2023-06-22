@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>music-player</title>
+    <link rel="stylesheet" href="./css/reset.min.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 主体 -->
+      <div class="main_box">
+        <!-- 唱片部分 -->
+        <div class="disk_box">
+          <div class="disk_wrapper">
+            <!-- 唱片图 -->
+            <div class="img_box">
+              <img src="./images/shifu.jpg" alt="" />
+            </div>
+            <!-- 黑圈 -->
+            <div class="black_disk">
+              <img class="playbtn" src="./images/playbtn.png" alt="" />
+            </div>
+          </div>
+          <!-- 拨针 -->
+          <span class="niddle">
+            <img src="./images/needle.png" alt="" />
+          </span>
+        </div>
+        <!-- 歌曲信息 -->
+        <div class="song_info">
+          <div class="head_info">
+            <span class="title">师傅</span>
+            <span> - </span>
+            <span class="singer">王朝1982/卦者灵风/朱旭BooBoo</span>
+          </div>
+          <!-- 歌词盒子 -->
+          <div class="words_box">
+            <div class="words_wrapper">
+              <p>师傅！</p>
+              <p>有Master会功夫</p>
+              <p>没Master受欺负</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 下部 -->
+      <div class="bottom_box">
+        <!-- 唱听部分 -->
+        <div class="sing_and_listen">
+          <div class="sing_the_song">
+            <span class="iconfont"></span>
+            <span>唱这首歌</span>
+          </div>
+          <div class="middle_line"></div>
+          <div class="together_listen">
+            <span class="iconfont"> </span>
+            <span> 一起听歌 </span>
+          </div>
+        </div>
+        <!-- 去app -->
+        <div class="go_to_app">
+          <div class="open_app">打开</div>
+          <div class="download_app">下载</div>
+        </div>
+      </div>
+      <div class="footer_box"></div>
+
+      <!-- 其他 -->
+      <div class="others_box">
+        <div class="mark_image"></div>
+        <div class="mark_over"></div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        const app = document.querySelector("#app"),
+          HTML = document.documentElement;
+        const computed = function computed() {
+          let orien = Math.abs(window.orientation);
+          if (orien === 90) {
+            // 切换到横屏
+            alert("横屏体验不佳，请您切换到竖屏");
+            app.style.display = "none";
+            return;
+          }
+          // 当前是竖屏
+          app.style.display = "block";
+
+          // 计算REM的换算比例
+          let deviceW = HTML.clientWidth,
+            designW = 375,
+            initialRatio = 100;
+          if (deviceW > 540) deviceW = 540;
+          let currentRatio = (deviceW / designW) * initialRatio;
+          HTML.style.fontSize = currentRatio + "px";
+        };
+        computed();
+        window.addEventListener("resize", computed);
+        // 基于 resize 代替 orientationchange 事件：这样可以适配模拟器中，设备的切换场景
+      })();
+    </script>
+  </body>
+</html>
